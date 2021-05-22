@@ -1,0 +1,101 @@
+<div class="container" *ngIf="order">
+
+  <div class="title">Order informations</div>
+
+  <div class="order" >
+    <div class="order-info">
+      <div class="attribute">First name:</div>
+      <div class="value">{{ order.firstName }}</div>
+    </div>
+
+    <div class="order-info">
+      <div class="attribute">Last name:</div>
+      <div class="value">{{ order.lastName }}</div>
+    </div>
+    <div class="order-info">
+      <div class="attribute">Address:</div>
+      <div class="value">{{ order.address }}</div>
+    </div>
+    <div class="order-info">
+      <div class="attribute">Zip code:</div>
+      <div class="value">{{ order.zipcode }}</div>
+    </div>
+    <div class="order-info">
+      <div class="attribute">City:</div>
+      <div class="value">{{ order.city }}</div>
+    </div>
+    <div class="order-info">
+      <div class="attribute">Country:</div>
+      <div class="value">{{ order.country }}</div>
+    </div>
+    <div class="order-info">
+      <div class="attribute">Other:</div>
+      <div class="value">{{ order.other }}</div>
+    </div>
+  </div>
+
+  <div class="title">Products in cart</div>
+
+  <div class="cart">
+    <div class="left-column">
+
+      <div class="items" >
+        <div class="product" *ngFor="let cartProduct of cartProductObs | async">
+          {{ cartProduct.name }} x {{ cartProduct.quantity }}
+        </div>
+
+        <div class="product">
+          shipping
+        </div>
+      </div>
+
+      <div class="items">
+        <div class="product">
+          {{ totalQuantity }} items
+        </div>
+      </div>
+
+      <div class="items">
+        <div class="product">
+          TVA (20%)
+        </div>
+
+        <div class="product">
+          Total TTC
+        </div>
+      </div>
+
+    </div>
+
+    <div class="right-column">
+
+      <div class="items" >
+        <div class="price" *ngFor="let cartProduct of cartProductObs | async">
+          {{ cartProduct.quantity * cartProduct.price | number : '1.2-2' }}€
+        </div>
+
+        <div class="price">
+          0€
+        </div>
+      </div>
+
+      <div class="items">
+        <div class="price">
+          {{ totalPrice | number : '1.2-2' }}€
+        </div>
+      </div>
+
+      <div class="items">
+        <div class="price">
+          {{ totalPrice * 20 / 100 | number : '1.2-2' }}€
+        </div>
+
+        <div class="price">
+          {{ totalPrice + (totalPrice * 20 / 100) | number : '1.2-2' }}€
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

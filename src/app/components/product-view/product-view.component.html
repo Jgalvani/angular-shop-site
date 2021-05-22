@@ -1,0 +1,28 @@
+<div class="product" *ngIf="product">
+  <img class="image" src="{{ product.image }}"/>
+
+  <div class="details">
+      <div class="name margin-bottom">{{ product.name }}</div>
+
+      <app-rating-stars [max]="5" [rate]="3.5"></app-rating-stars>
+
+    <div class="price margin-top bold">{{ product.price }}€</div>
+
+    <p class="description margin-top">{{ product.description }}</p>
+
+    <div class="buttons margin-top">
+      <button class="button bold margin-right" (click)="openCartModal()">
+        <span class="margin-right">+</span>
+        Add to cart
+      </button>
+
+      <button *ngIf="isModal" class="button bold" (click)="closeModal()">Continue shopping</button>
+
+      <!--button class="cart-button" (click)="openCartModal()"></button-->
+    </div>
+
+    <div class="share margin-top bold">Share</div>
+  </div>
+
+</div>
+

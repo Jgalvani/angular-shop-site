@@ -1,0 +1,81 @@
+<div *ngIf="!customer && !orderWithoutLogin" class="container">
+  <div class="buttons center">
+    <button class="button">login</button>
+    <button class="button" (click)="onOrderWithoutLogin()">continue without login</button>
+  </div>
+</div>
+
+<div *ngIf="customer || orderWithoutLogin" class="container">
+  <div class="title">Order</div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="control">
+      <label class="form-label" for="firstName">First name <span class="mandatory">*</span></label>
+      <input class="form-input" id="firstName" formControlName="firstName" type="text">
+
+      <div *ngIf="form.controls.firstName.touched && form.controls.firstName.invalid" class="alert">
+        <div *ngIf="form.controls.firstName.errors?.required">firstName is required.</div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label class="form-label" for="larstName">Last name <span class="mandatory">*</span></label>
+      <input class="form-input" id="lastName" formControlName="lastName" type="text">
+
+      <div *ngIf="form.controls.lastName.touched && form.controls.lastName.invalid" class="alert">
+        <div *ngIf="form.controls.lastName.errors?.required">lastName is required.</div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label class="form-label" for="address">Address <span class="mandatory">*</span></label>
+      <textarea class="form-input" id="address" formControlName="address"></textarea>
+
+      <div *ngIf="form.controls.address.touched && form.controls.address.invalid" class="alert">
+        <div *ngIf="form.controls.address.errors?.required">address is required.</div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label class="form-label" for="zipcode">Zip code <span class="mandatory">*</span></label>
+      <input class="form-input" id="zipcode" formControlName="zipcode" type="text">
+
+      <div *ngIf="form.controls.zipcode.touched && form.controls.zipcode.invalid" class="alert">
+        <div *ngIf="form.controls.zipcode.errors?.required">zipcode is required.</div>
+        <div *ngIf="form.controls.zipcode.errors?.minlength">zipcode should have more than 4 charaters at least.</div>
+        <div *ngIf="form.controls.zipcode.errors?.maxlength">zipcode should have less than 10 charaters.</div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label class="form-label" for="city">City <span class="mandatory">*</span></label>
+      <input class="form-input" id="city" formControlName="city" type="text">
+
+      <div *ngIf="form.controls.city.touched && form.controls.city.invalid" class="alert">
+        <div *ngIf="form.controls.city.errors?.required">city is required.</div>
+      </div>
+    </div>
+
+
+    <div class="control">
+      <label class="form-label" for="country">Country <span class="mandatory">*</span> </label>
+      <input class="form-input" id="country" formControlName="country" type="text">
+
+      <div *ngIf="form.controls.country.touched && form.controls.country.invalid" class="alert">
+        <div *ngIf="form.controls.country.errors?.required">country is required.</div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label class="form-label" for="other">other</label>
+      <textarea class="form-input" id="other" formControlName="other"></textarea>
+    </div>
+
+    <div class="buttons">
+      <button class="button" (click)="onCancel()">cancel</button>
+      <button [ngClass]="{'button': true, 'disabled': form.invalid}" type="submit" [disabled]="form.invalid">submit</button>
+    </div>
+
+  </form>
+</div>

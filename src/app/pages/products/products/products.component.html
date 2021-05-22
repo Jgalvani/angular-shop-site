@@ -1,0 +1,38 @@
+<app-product-modal></app-product-modal>
+<app-cart-modal></app-cart-modal>
+
+<div class="card">
+  <div class="product" *ngFor="let product of productObs | async | slice:sliceValues.start:sliceValues.end;">
+    <!--span class="badge">New</span-->
+
+    <div class="margin-top image" >
+      <a routerLink="{{ product.id }}">
+        <img src="{{ product.image }}"/>
+      </a>
+
+        <button class="icon" (click)="openProductModal(product)">
+          <app-zoom-icon></app-zoom-icon>
+          <!--span class="tooltip">Quick view</span-->
+        </button>
+    </div>
+
+    <div class="details">
+      <a class="name-link" routerLink="{{ product.id }}">
+        <div class="margin-bottom name">{{ product.name }}</div>
+      </a>
+
+      <app-rating-stars [max]="5" [rate]="3.5"></app-rating-stars>
+
+      <div class="margin-top price">{{ product.price }}€</div>
+
+      <app-cart-icon class="cart-button" (click)="openCartModal(product)"></app-cart-icon>
+    </div>
+  </div>
+</div>
+
+<app-pagination
+  *ngIf="productsLength > 10"
+  class="pagination"
+  [length]="productsLength"
+  (sliceEmitter)="getSlice($event)"
+></app-pagination>

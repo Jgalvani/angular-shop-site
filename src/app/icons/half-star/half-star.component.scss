@@ -1,0 +1,14 @@
+.relative {
+  position: relative;
+
+  svg {
+    width: 16px;
+    fill: gold;
+  }
+
+  .shape {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+  }
+}

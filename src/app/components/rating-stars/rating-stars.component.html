@@ -1,0 +1,7 @@
+<div class="stars">
+  <div *ngFor="let num of maxStars">
+    <app-full-star *ngIf="num <= rating"></app-full-star>
+    <app-half-star *ngIf="num > rating && num === ceilRating"></app-half-star>
+    <app-empty-star *ngIf="num > rating && num > ceilRating"></app-empty-star>
+  </div>
+</div>

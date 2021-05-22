@@ -1,0 +1,41 @@
+<div #background class="modal-background hidden">
+  <div #modal class="modal-body">
+
+    <header class="header">✓ Product successfully added to cart</header>
+<div class="container">
+
+  <div *ngIf="cartProduct" class="product">
+    <img  class="image" src="{{ cartProduct.image }}"/>
+
+    <div class="details">
+      <div class="name">{{ cartProduct.name }}</div>
+
+      <div class="price margin-top bold">Price: {{ cartProduct.price }}€</div>
+
+      <div class="quantity margin-top">Quantity: {{ cartProduct.quantity }}</div>
+    </div>
+  </div>
+
+  <div class="cart-infos">
+    <div class="length">
+      There is <b>{{ totalQuantity }}</b> item{{ totalQuantity > 1 ? 's' : ''}} in your cart.
+    </div>
+
+    <div class="cart-price  margin-top">Total product price: {{ productsPrice | number : '1.2-2'}}</div>
+    <div class="cart-price  margin-top">Total shipping price: {{ shippingPrice | number : '1.2-2'}}</div>
+    <div class="cart-price  margin-top">Total price: {{ totalPrice | number : '1.2-2' }}</div>
+
+    <div class="buttons margin-top">
+      <button class="button margin-right bold" (click)="closeModal()">Continue shopping</button>
+      <button class="button bold" (click)="goToCart()">
+          <span>✓</span>
+          Proceed to checkout
+      </button>
+    </div>
+  </div>
+
+</div>
+
+
+  </div>
+</div>

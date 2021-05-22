@@ -1,0 +1,28 @@
+<header>
+  <div class="title">Shop name</div>
+  <div class="nav">
+    <a class="link" routerLink="home">Home</a>
+    <a class="link" routerLink="products">Shop</a>
+
+    <div class="category-selector">
+      <div class="link">Category</div>
+      <div class="categories">
+        <div class="category" (click)="filterProducts(null)">Tous les produits</div>
+        <div
+          class="category"
+          *ngFor="let category of categoryObs | async"
+          (click)="filterProducts(category)"
+        >
+          {{ category.name }}
+        </div>
+      </div>
+    </div>
+
+    <a class="link" routerLink="contact">Contact</a>
+    <a class="link" routerLink="login">Login</a>
+    <a class="link" routerLink="register">Register</a>
+  </div>
+  <div class="action">
+    <a class="link" routerLink="cart">Cart</a>
+  </div>
+</header>

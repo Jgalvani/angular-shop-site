@@ -1,0 +1,42 @@
+<div class="title">Your cart items</div>
+<div class="table">
+  <table>
+
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let cartProduct of cartProductObs | async | slice:sliceValues.start:sliceValues.end;">
+        <td><img src="{{ cartProduct.image }}"/></td>
+        <td>{{ cartProduct.name }}</td>
+        <td>{{ cartProduct.stock > 0 ? 'In stock' : 'Out of stock' }}</td>
+        <td> <input class="quantity" type="number" [(ngModel)]="cartProduct.quantity"/> </td>
+        <td>{{ cartProduct.price | number : '1.2-2' }}</td>
+        <td> <app-trash-icon (click)="removeProduct(cartProduct)"></app-trash-icon> </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+
+<a routerLink="validation" class="validation margin-bottom">
+  <button [ngClass]="{'button': true, 'disabled': length < 1}" [disabled]="length < 1">
+    Buy
+  </button>
+</a>
+
+<app-pagination
+  *ngIf="length > 10"
+  class="pagination"
+  [length]="length"
+  (sliceEmitter)="getSlice($event)"
+></app-pagination>
+

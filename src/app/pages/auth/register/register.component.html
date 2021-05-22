@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="title">Register</div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="control">
+      <label class="form-label" for="firstName">First name</label>
+      <input class="form-input" id="firstName" formControlName="firstName" type="text">
+
+      <div *ngIf="form.controls.name.touched && form.controls.name.invalid" class="alert">
+        <div *ngIf="form.controls.name.errors?.required">firstName is required.</div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label class="form-label" for="larstName">Last name</label>
+      <input class="form-input" id="lastName" formControlName="lastName" type="text">
+
+      <div *ngIf="form.controls.name.touched && form.controls.name.invalid" class="alert">
+        <div *ngIf="form.controls.name.errors?.required">lastName is required.</div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label class="form-label" for="email">email</label>
+      <input class="form-input" id="email" formControlName="email" type="email">
+    </div>
+
+    <div class="control">
+      <label class="form-label" for="birthDate">birth date</label>
+      <input class="form-input" id="birthDate" formControlName="birthDate" type="month">
+    </div>
+
+    <div class="control">
+      <label class="form-label" for="password">password</label>
+      <input class="form-input" id="password" formControlName="password" type="password">
+    </div>
+
+    <div class="control">
+      <label class="form-label" for="validatePassword">validate password</label>
+      <input class="form-input" id="validatePassword" formControlName="validatePassword" type="password">
+    </div>
+
+    <div class="control">
+      <label class="form-label" for="address">Address</label>
+      <textarea class="form-input" id="address" formControlName="address"></textarea>
+
+      <div *ngIf="form.controls.name.touched && form.controls.name.invalid" class="alert">
+        <div *ngIf="form.controls.name.errors?.required">address is required.</div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label class="form-label" for="zipcode">Zip code</label>
+      <input class="form-input" id="zipcode" formControlName="zipcode" type="text">
+
+      <div *ngIf="form.controls.name.touched && form.controls.name.invalid" class="alert">
+        <div *ngIf="form.controls.name.errors?.required">zipcode is required.</div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label class="form-label" for="city">City</label>
+      <input class="form-input" id="city" formControlName="city" type="text">
+
+      <div *ngIf="form.controls.name.touched && form.controls.name.invalid" class="alert">
+        <div *ngIf="form.controls.name.errors?.required">city is required.</div>
+      </div>
+    </div>
+
+
+    <div class="control">
+      <label class="form-label" for="country">Country</label>
+      <input class="form-input" id="country" formControlName="country" type="text">
+
+      <div *ngIf="form.controls.name.touched && form.controls.name.invalid" class="alert">
+        <div *ngIf="form.controls.name.errors?.required">country is required.</div>
+      </div>
+    </div>
+
+    <div class="control">
+      <label class="form-label" for="other">other</label>
+      <textarea class="form-input" id="other" formControlName="other"></textarea>
+    </div>
+
+    <div class="buttons">
+      <button class="button" (click)="onCancel()">cancel</button>
+      <button class="button" type="submit" >submit</button>
+    </div>
+
+  </form>
+</div>
